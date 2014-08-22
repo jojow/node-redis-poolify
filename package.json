@@ -1,0 +1,37 @@
+{
+  "name": "redis-poolify",
+  "preferGlobal": false,
+  "version": "0.0.1",
+  "author": "Johannes Wettinger <mail@jojow.de>",
+  "description": "Redis connection pool for Node.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jojow/node-redis-poolify"
+  },
+  "contributors": [
+    {
+      "name": "Johannes Wettinger",
+      "email": "mail@jojow.de"
+    }
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "debug": "^1.0.4",
+    "redis": "^0.12.1",
+    "generic-pool": "^2.1.1"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "keywords": [
+    "pool",
+    "redis"
+  ]
+}
