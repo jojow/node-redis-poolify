@@ -2,4 +2,4 @@
 
 Redis connection pool for Node.js
 
-  npm install redis-poolify
+    npm install redis-poolify

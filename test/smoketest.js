@@ -1,4 +1,5 @@
 var chai = require('chai');
+var expect = chai.expect;
 chai.should();
 
 var RedisPool = require('../');
@@ -7,21 +8,26 @@ var config = {};
 
 
 
-describe('RedisPool', function() {
+describe('RedisPool smoke test', function() {
   describe('#acquire()', function() {
-    it('should acquire client instance, set value, and get value', function() {
+    it('should acquire client instance, set value, and get value', function(done) {
+      var key = 'foo';
+      var value = 'bar';
+
       clientPool.acquire(config, function(err, client) {
-        if (err) throw err;
+        expect(err).to.not.exist;
 
-        client.set('foo', 'bar', function(err, result) {
-          if (err) throw err;
+        client.set(key, value, function(err, result) {
+          expect(err).to.not.exist;
 
-          client.get('foo', function(err, result) {
-            if (err) throw err;
+          client.get(key, function(err, result) {
+            expect(err).to.not.exist;
 
-            result.should.equal('bar');
+            result.should.equal(value);
 
             clientPool.release(config, client);
+
+            done();
           });
         });
       });
@@ -29,11 +35,13 @@ describe('RedisPool', function() {
   });
 
   describe('#release()', function() {
-    it('should acquire and then release client instance', function() {
+    it('should acquire and then release client instance', function(done) {
       clientPool.acquire(config, function(err, client) {
-        if (err) throw err;
+        expect(err).to.not.exist;
 
         clientPool.release(config, client);
+
+        done();
       });
     });
   });
