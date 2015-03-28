@@ -3,7 +3,7 @@ var expect = chai.expect;
 chai.should();
 
 var RedisPool = require('../');
-var clientPool = new RedisPool();
+var clientPool = RedisPool();
 var config = {};
 
 
